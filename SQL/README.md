@@ -10,7 +10,7 @@ DCL: data control language
 
 Datatypes:
 varchar2(size)
-number(size, base)		!!!base not confirm
+number(size, base)		-- base not confirm
 date
 long
 
@@ -30,10 +30,10 @@ Some of The Most Important SQL Commands
 
 # Important Points
 - SQL keywords are NOT case sensitive: `select` is the same as `SELECT`
-- Column Name with space [Contact Person]
+- Column name with space are surrounded with square brackets [Contact Person]
 - SQL requires single quotes around text values (most database systems will also allow double quotes). However, numeric fields should not be enclosed in quotes
 - We will have to use the `IS NULL` and `IS NOT NULL` operators for null comparison
-- Input DATE as #07/01/1996# or '1996-07-01'
+- Input DATE as `#07/01/1996#` or `'1996-07-01'`
 - Group or aggregate functions should not be combined to single values or functions or ERROR is raised
 - Single `=` is used for equalTo and `<>` or `!=` for not equalTO
 
@@ -51,8 +51,6 @@ Some of The Most Important SQL Commands
 | 5 | `SELECT`		| Returns the final data |
 | 6 | `ORDER BY`	| Sorts the final data |
 | 7 | `LIMIT`		| Limits the returned data to a row count |
-
-<br>
 
 ### Comments
 ```MySQL
@@ -112,7 +110,7 @@ UPDATE table_name
 SET column1 = value1, column2 = value2, ...
 WHERE condition;
 ```
-> !!! If you omit the WHERE clause, all records in the table will be updated!
+> :exclamation: If you omit the WHERE clause, all records in the table will be updated!
 
 ### DELETE
 ```SQL
@@ -120,7 +118,7 @@ DELETE FROM table_name WHERE condition;
 ```
 
 ### SELECT TOP
-> !!! Not all database systems support the `SELECT TOP` clause. MySQL supports the `LIMIT` clause to select a limited number of records, while Oracle uses `FETCH FIRST n ROWS ONLY` and `ROWNUM`.
+> :exclamation: Not all database systems support the `SELECT TOP` clause. MySQL supports the `LIMIT` clause to select a limited number of records, while Oracle uses `FETCH FIRST n ROWS ONLY` and `ROWNUM`.
 
 ### ALIASES
 ```SQL
