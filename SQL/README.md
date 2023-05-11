@@ -151,16 +151,30 @@ To filter subset or groups of `GROUP BY`
 
 ## Joins
 #### INNER JOIN
+Returns records that have matching values in both tables
 ```SQL
 SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
 FROM Orders
 INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
 ```
 #### LEFT JOIN
+Returns all records from the left table, and the matched records from the right table
 #### RIGHT JOIN
-#### FULL OUTER JOIN
+Returns all records from the right table, and the matched records from the left table
+#### CROSS JOIN
+Returns all records from both tables
+Also known as `FULL OUTER JOIN` and `FULL JOIN` in SQL (not MySQL)
 
-#### SELF JOIN When row itself are inter-related
+#### SELF JOIN
+A self join is a regular join, but the table is joined with itself.
+When row itself are inter-related
+```SQL
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City
+FROM Customers A, Customers B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City;
+```
 
 <br>
 
