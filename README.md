@@ -1,4 +1,5 @@
 # MyNotes
 Notes for various languages
 
-[SQL](/SQL/)
+[Java](/Java/README.md)
+[SQL](/SQL/README.md)
