@@ -1,6 +1,6 @@
 > Note: Mainly syntax of MySQL
 
-> :exclamation: For revision. For whole reference use [w3schools](https://www.w3schools.com/sql/default.asp)
+> :exclamation: For revision. For whole reference use [w3schools](https://www.w3schools.com/mysql/default.asp)
 
 <!--
 DDL: data defining language			CREATE, ALTER, DROP, MODIFY
@@ -30,7 +30,7 @@ Some of The Most Important SQL Commands
 
 # Important Points
 - SQL keywords are NOT case sensitive: `select` is the same as `SELECT`
-- Column name with space are surrounded with square brackets [Contact Person]
+- Column heading name with space are surrounded with square brackets [Contact Person]
 - SQL requires single quotes around text values (most database systems will also allow double quotes). However, numeric fields should not be enclosed in quotes
 - We will have to use the `IS NULL` and `IS NOT NULL` operators for null comparison
 - Input DATE as `#07/01/1996#` or `'1996-07-01'`
@@ -84,6 +84,7 @@ SELECT * FROM Products WHERE Price BETWEEN 50 AND 60;
 SELECT * FROM Customers WHERE City LIKE 's%';
 SELECT * FROM Customers WHERE City IN ('Paris','London');
 ```
+:exclamation: A `NOT IN` query will not return any rows if any `NULL`s exists in the list of `NOT IN` values.
 
 ### ORDER BY
 The `ORDER BY` keyword sorts the records in ascending order by default. To sort the records in descending order, use the `DESC` keyword.
@@ -149,18 +150,60 @@ ORDER BY column_name(s);
 ### HAVING
 To filter subset or groups of `GROUP BY`
 
+### UNION
+The `UNION` operator is used to combine the result-set of two or more `SELECT` statements.
+
+- Every `SELECT` statement within `UNION` must have the same number of columns
+- The columns must also have similar data types
+- The columns in every `SELECT` statement must also be in the same order
+```SQL
+SELECT column_name(s) FROM table1
+UNION
+SELECT column_name(s) FROM table2;
+```
+
+### UNION ALL
+The `UNION` operator selects only distinct values by default. To allow duplicate values, use `UNION ALL`
+
+### EXISTS
+- The `EXISTS` operator is used to test for the existence of any record in a subquery.
+- The `EXISTS` operator returns TRUE if the subquery returns one or more records.
+```SQL
+SELECT column_name(s)
+FROM table_name
+WHERE EXISTS
+(SELECT column_name FROM table_name WHERE condition);
+```
+
+### todo: any all case etc
+
 ## Joins
 #### INNER JOIN
+Returns records that have matching values in both tables
 ```SQL
 SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
 FROM Orders
 INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
 ```
 #### LEFT JOIN
+Returns all records from the left table, and the matched records from the right table
 #### RIGHT JOIN
-#### FULL OUTER JOIN
+Returns all records from the right table, and the matched records from the left table
+#### CROSS JOIN
+1. Returns all records from both tables
+2. Also known as `FULL OUTER JOIN` and `FULL JOIN` in SQL (not MySQL)
+3. !!! If you add a WHERE clause (if table1 and table2 has a relationship), the CROSS JOIN will produce the same result as the INNER JOIN clause
 
-#### SELF JOIN When row itself are inter-related
+#### SELF JOIN
+A self join is a regular join, but the table is joined with itself.
+When row itself are inter-related
+```SQL
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City
+FROM Customers A, Customers B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City;
+```
 
 <br>
 
