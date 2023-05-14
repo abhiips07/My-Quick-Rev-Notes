@@ -1,6 +1,6 @@
 > Note: Mainly syntax of MySQL
 
-> :exclamation: For revision. For whole reference use [w3schools](https://www.w3schools.com/sql/default.asp)
+> :exclamation: For revision. For whole reference use [w3schools](https://www.w3schools.com/mysql/default.asp)
 
 <!--
 DDL: data defining language			CREATE, ALTER, DROP, MODIFY
@@ -30,7 +30,7 @@ Some of The Most Important SQL Commands
 
 # Important Points
 - SQL keywords are NOT case sensitive: `select` is the same as `SELECT`
-- Column name with space are surrounded with square brackets [Contact Person]
+- Column heading name with space are surrounded with square brackets [Contact Person]
 - SQL requires single quotes around text values (most database systems will also allow double quotes). However, numeric fields should not be enclosed in quotes
 - We will have to use the `IS NULL` and `IS NOT NULL` operators for null comparison
 - Input DATE as `#07/01/1996#` or `'1996-07-01'`
@@ -84,6 +84,7 @@ SELECT * FROM Products WHERE Price BETWEEN 50 AND 60;
 SELECT * FROM Customers WHERE City LIKE 's%';
 SELECT * FROM Customers WHERE City IN ('Paris','London');
 ```
+:exclamation: A `NOT IN` query will not return any rows if any `NULL`s exists in the list of `NOT IN` values.
 
 ### ORDER BY
 The `ORDER BY` keyword sorts the records in ascending order by default. To sort the records in descending order, use the `DESC` keyword.
@@ -163,6 +164,18 @@ SELECT column_name(s) FROM table2;
 
 ### UNION ALL
 The `UNION` operator selects only distinct values by default. To allow duplicate values, use `UNION ALL`
+
+### EXISTS
+- The `EXISTS` operator is used to test for the existence of any record in a subquery.
+- The `EXISTS` operator returns TRUE if the subquery returns one or more records.
+```SQL
+SELECT column_name(s)
+FROM table_name
+WHERE EXISTS
+(SELECT column_name FROM table_name WHERE condition);
+```
+
+### todo: any all case etc
 
 ## Joins
 #### INNER JOIN
