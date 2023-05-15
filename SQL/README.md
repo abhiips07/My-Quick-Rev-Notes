@@ -61,121 +61,144 @@ Some of The Most Important SQL Commands
 <br>
 
 # SQL Statements
-### SELECT
-The `SELECT` statement is used to select data from a database.The data returned is stored in a result table, called the `result-set`.
-```SQL
-SELECT column1, column2, ...
-FROM table_name;
-```
+1. ### SELECT
+	The `SELECT` statement is used to select data from a database.The data returned is stored in a result table, called the `result-set`.
+	```SQL
+	SELECT column1, column2, ...
+	FROM table_name;
+	```
 
-### DISTINCT
-```SQL
-SELECT COUNT(DISTINCT Country) FROM Customers;
-```
-```SQL
--- MS Access
-SELECT Count(*) AS DistinctCountries
-FROM (SELECT DISTINCT Country FROM Customers);
-```
+1. ### DISTINCT
+	```SQL
+	SELECT COUNT(DISTINCT Country) FROM Customers;
+	```
+	```SQL
+	-- MS Access
+	SELECT Count(*) AS DistinctCountries
+	FROM (SELECT DISTINCT Country FROM Customers);
+	```
 
-### WHERE
-```SQL
-SELECT * FROM Products WHERE Price BETWEEN 50 AND 60;
-SELECT * FROM Customers WHERE City LIKE 's%';
-SELECT * FROM Customers WHERE City IN ('Paris','London');
-```
-:exclamation: A `NOT IN` query will not return any rows if any `NULL`s exists in the list of `NOT IN` values.
+1. ### WHERE
+	```SQL
+	SELECT * FROM Products WHERE Price BETWEEN 50 AND 60;
+	SELECT * FROM Customers WHERE City LIKE 's%';
+	SELECT * FROM Customers WHERE City IN ('Paris','London');
+	```
+	:exclamation: A `NOT IN` query will not return any rows if any `NULL`s exists in the list of `NOT IN` values.
 
-### ORDER BY
-The `ORDER BY` keyword sorts the records in ascending order by default. To sort the records in descending order, use the `DESC` keyword.
-```SQL
-SELECT column1, column2, ...
-FROM table_name
-ORDER BY column1, column2, ... ASC|DESC;
-```
-Example: The following SQL statement selects all customers from the `Customers` table, sorted by the `Country` and the `CustomerName` column. This means that it orders by Country, but if some rows have the same Country, it orders them by CustomerName:
-```SQL
-SELECT * FROM Customers
-ORDER BY Country ASC, CustomerName DESC;
-```
+1. ### ORDER BY
+	The `ORDER BY` keyword sorts the records in ascending order by default. To sort the records in descending order, use the `DESC` keyword.
+	```SQL
+	SELECT column1, column2, ...
+	FROM table_name
+	ORDER BY column1, column2, ... ASC|DESC;
+	```
+	Example: The following SQL statement selects all customers from the `Customers` table, sorted by the `Country` and the `CustomerName` column. This means that it orders by Country, but if some rows have the same Country, it orders them by CustomerName:
+	```SQL
+	SELECT * FROM Customers
+	ORDER BY Country ASC, CustomerName DESC;
+	```
 
-### INSERT INTO
-```SQL
-INSERT INTO table_name (column1, column2, column3, ...)
-VALUES (value1, value2, value3, ...);
-```
+1. ### INSERT INTO
+	```SQL
+	INSERT INTO table_name (column1, column2, column3, ...)
+	VALUES (value1, value2, value3, ...);
+	```
 
-### UPDATE
-```SQL
-UPDATE table_name
-SET column1 = value1, column2 = value2, ...
-WHERE condition;
-```
-> :exclamation: If you omit the WHERE clause, all records in the table will be updated!
+1. ### UPDATE
+	```SQL
+	UPDATE table_name
+	SET column1 = value1, column2 = value2, ...
+	WHERE condition;
+	```
+	> :exclamation: If you omit the WHERE clause, all records in the table will be updated!
 
-### DELETE
-```SQL
-DELETE FROM table_name WHERE condition;
-```
+1. ### DELETE
+	```SQL
+	DELETE FROM table_name WHERE condition;
+	```
 
-### SELECT TOP
-> :exclamation: Not all database systems support the `SELECT TOP` clause. MySQL supports the `LIMIT` clause to select a limited number of records, while Oracle uses `FETCH FIRST n ROWS ONLY` and `ROWNUM`.
+1. ### SELECT TOP
+	> :exclamation: Not all database systems support the `SELECT TOP` clause. MySQL supports the `LIMIT` clause to select a limited number of records, while Oracle uses `FETCH FIRST n ROWS ONLY` and `ROWNUM`.
 
-### ALIASES
-```SQL
--- Alias Column Syntax
-SELECT column_name AS alias_name
-FROM table_name;
+1. ### ALIASES
+	```SQL
+	-- Alias Column Syntax
+	SELECT column_name AS alias_name
+	FROM table_name;
 
--- Alias Table Syntax 1
-SELECT column_name(s)
-FROM table_name AS alias_name;
--- Alias Table Syntax 2
-SELECT column_name(s)
-FROM table_name alias_name, table2_name alias_name2;
-```
+	-- Alias Table Syntax 1
+	SELECT column_name(s)
+	FROM table_name AS alias_name;
+	-- Alias Table Syntax 2
+	SELECT column_name(s)
+	FROM table_name alias_name, table2_name alias_name2;
+	```
 
-### BETWEEN
-The `BETWEEN` operator is inclusive that is begining and end values are included
+1. ### BETWEEN
+	The `BETWEEN` operator is inclusive that is begining and end values are included
 
-### GROUP BY
-```SQL
-SELECT column_name(s)
-FROM table_name
-WHERE condition
-GROUP BY column_name(s)		-- position is also imp after WHERE and before ORDER BY
-ORDER BY column_name(s);
-```
+1. ### GROUP BY
+	```SQL
+	SELECT column_name(s)
+	FROM table_name
+	WHERE condition
+	GROUP BY column_name(s)		-- position is also imp after WHERE and before ORDER BY
+	ORDER BY column_name(s);
+	```
 
-### HAVING
-To filter subset or groups of `GROUP BY`
+1. ### HAVING
+	To filter subset or groups of `GROUP BY`
 
-### UNION
-The `UNION` operator is used to combine the result-set of two or more `SELECT` statements.
+1. ### UNION
+	The `UNION` operator is used to combine the result-set of two or more `SELECT` statements.
 
-- Every `SELECT` statement within `UNION` must have the same number of columns
-- The columns must also have similar data types
-- The columns in every `SELECT` statement must also be in the same order
-```SQL
-SELECT column_name(s) FROM table1
-UNION
-SELECT column_name(s) FROM table2;
-```
+	- Every `SELECT` statement within `UNION` must have the same number of columns
+	- The columns must also have similar data types
+	- The columns in every `SELECT` statement must also be in the same order
+	```SQL
+	SELECT column_name(s) FROM table1
+	UNION
+	SELECT column_name(s) FROM table2;
+	```
 
-### UNION ALL
-The `UNION` operator selects only distinct values by default. To allow duplicate values, use `UNION ALL`
+1. ### UNION ALL
+	The `UNION` operator selects only distinct values by default. To allow duplicate values, use `UNION ALL`
 
-### EXISTS
-- The `EXISTS` operator is used to test for the existence of any record in a subquery.
-- The `EXISTS` operator returns TRUE if the subquery returns one or more records.
-```SQL
-SELECT column_name(s)
-FROM table_name
-WHERE EXISTS
-(SELECT column_name FROM table_name WHERE condition);
-```
+1. ### EXISTS
+	- The `EXISTS` operator is used to test for the existence of any record in a subquery.
+	- The `EXISTS` operator returns TRUE if the subquery returns one or more records.
+	```SQL
+	SELECT column_name(s)
+	FROM table_name
+	WHERE EXISTS
+	(SELECT column_name FROM table_name WHERE condition);
+	```
 
-### todo: any all case etc
+1. ### ANY and ALL
+	`ANY` means that the condition will be true if the operation is true for any of the values in the range.
+	```SQL
+	SELECT column_name(s)
+	FROM table_name
+	WHERE column_name operator ANY
+	(SELECT column_name
+	FROM table_name
+	WHERE condition);
+	```
+
+	`ALL` means that the condition will be true only if the operation is true for all values in the range.
+
+	Is used with `SELECT`, `WHERE` and `HAVING` statements
+	```SQL
+	SELECT column_name(s)
+	FROM table_name
+	WHERE column_name operator ALL
+	(SELECT column_name
+	FROM table_name
+	WHERE condition);
+	```
+
+	> :exclamation: The operator must be a standard comparison operator (=, <>, !=, >, >=, <, or <=).
 
 ## Joins
 #### INNER JOIN
