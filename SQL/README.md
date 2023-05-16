@@ -200,6 +200,17 @@ Some of The Most Important SQL Commands
 
 	> :exclamation: The operator must be a standard comparison operator (=, <>, !=, >, >=, <, or <=).
 
+1. ### CASE
+	```SQL
+	CASE
+		WHEN condition1 THEN result1
+		WHEN condition2 THEN result2
+		WHEN conditionN THEN resultN
+		ELSE result
+	END;
+	```
+	> :exclamation: If there is no `ELSE` part and no conditions are true, it returns `NULL`.
+
 ## Joins
 #### INNER JOIN
 Returns records that have matching values in both tables
