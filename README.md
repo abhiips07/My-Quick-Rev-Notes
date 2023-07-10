@@ -1,9 +1,18 @@
+> These notes are for my own personal use.
 # MyNotes
 Notes for various languages
 
 - [Java](/Java/README.md)
 - [C](/C/README.md)
+
+<br>
+
 - [SQL](/SQL/README.md)
+
+<br>
+
+- [CSS](/CSS/README.md)
+- [JavaScript](/JavaScript/README.md)
 
 ### ASCII Codes
 ```
