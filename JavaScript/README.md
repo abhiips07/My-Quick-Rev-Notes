@@ -93,6 +93,7 @@ $(css-selector).function()
 $(document).keypress(function(event) {
 	$("h1").text(event.key);
 })
+
 $("body").addClass("classname");
 $("body").removeClass("classname");
 $("body").text("texty");
