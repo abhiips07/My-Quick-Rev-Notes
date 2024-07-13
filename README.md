@@ -17,6 +17,7 @@ Notes for various languages
 
 ## Other things
 - [Build Tools](/Build%20Tools/README.md)
+- [Bash](/Bash/README.md)
 
 <br>
 
