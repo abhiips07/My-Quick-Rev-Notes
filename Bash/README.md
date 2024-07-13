@@ -39,7 +39,7 @@ Bash: bourne again shell (enhanced version of shell)
 - `svn`: Subversion version control system.
 ## Automation and Scripting:
 - `cron`: Job scheduler.
-- bash scripts: Writing and executing bash scripts for automation.
+- ***bash scripts***: Writing and executing bash scripts for automation.
 ## Networking:
 - `ssh`: Secure shell for remote access.
 - `scp`: Securely copy files between hosts.
@@ -84,11 +84,16 @@ Bash: bourne again shell (enhanced version of shell)
 - `curl`: Transfer data from or to a server.
 - `tmux`: Terminal multiplexer.
 - `jq`: Command-line JSON processor.
-----------------------------
+----------------------
+----------------------
 
-shebang: #!/bin/bash
+# Important points
+- shebang: #!/bin/bash
+- if a variable is passed like this `ENV_VAR=value executable param1 param2` then it is defined for the period of that command execution only.
+- when we defined a env variable using `export` then it is pass to all sub or child process called from that environment
 
 # Variables
+```bash
 AGE=25
 echo $AGE
 
@@ -98,6 +103,7 @@ unset AGE
 func() {
 	local AGE=25		# local variable (by default variables are global)
 }
+```
 
 | Variable Type    | Syntax              | Description                                          |
 |------------------|---------------------|------------------------------------------------------|
