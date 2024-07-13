@@ -3,6 +3,7 @@
 Notes for various languages
 
 - [Java](/Java/README.md)
+- [Python](/Python/README.md)
 - [C](/C/README.md)
 
 <br>
