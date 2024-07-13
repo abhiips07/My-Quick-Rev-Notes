@@ -1,4 +1,4 @@
-> These notes are for my own personal use.
+> These notes are for my own personal use. Half of them are incomplete as most of the things are in my mind and these notes custom made for me.
 # MyNotes
 Notes for various languages
 
