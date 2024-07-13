@@ -85,7 +85,6 @@ Bash: bourne again shell (enhanced version of shell)
 - `tmux`: Terminal multiplexer.
 - `jq`: Command-line JSON processor.
 ----------------------
-----------------------
 
 # Important points
 - shebang: #!/bin/bash
