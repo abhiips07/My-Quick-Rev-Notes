@@ -87,14 +87,17 @@ Bash: bourne again shell (enhanced version of shell)
 ----------------------
 
 # Important points
-- shebang: #!/bin/bash
+- shebang: #!/bin/bash. This is honoured by operating system if script is executed by itself like `./myscript.sh`
 - if a variable is passed like this `ENV_VAR=value executable param1 param2` then it is defined for the period of that command execution only.
 - when we defined a env variable using `export` then it is pass to all sub or child process called from that environment
 
 # Variables
 ```bash
+# you can not have spaces before and after the = sign.
 AGE=25
 echo $AGE
+# OR
+echo ${AGE}		# good practice standard
 
 readonly AGE		# marks the variable as readonly
 unset AGE
@@ -103,6 +106,22 @@ func() {
 	local AGE=25		# local variable (by default variables are global)
 }
 ```
+
+if parameter are passed to the command like this `./myscript.sh para1 para2!` then they can be referenced like by $\<parameter no\>
+- $1: for first parameter
+- $2: for second parameter
+- $@: for all parameter
+- $0: reference the script itself (can be used to self destruct by `rm -f $0` in the script)
+
+### take input
+`-p` is use for prompt msg
+```bash
+#!/bin/bash
+read -p "What is your name? " name
+echo "Hi there $name"
+echo "Welcome to DevDojo!"
+```
+
 
 | Variable Type    | Syntax              | Description                                          |
 |------------------|---------------------|------------------------------------------------------|
@@ -128,9 +147,17 @@ multiline2
 # Array
 ```bash
 array=(one two three)
-array[0]=first index
-array[-1]=last index
-array[key1]=one		# for associated type
+# in case of array you have to use curly braces
+echo ${array[0]}	# first index
+echo ${array[-1]}	# last index
+array[key1]=one		# for associated or key-vaule type
+echo ${array:0:2}	# slicing, 0 inclusive, 2 exclusive
+echo ${array::5}	# slicing, defaults to 0, 5 exclusive
+echo ${array:3}		# slicing, start from index 3 to end
+
+echo {1..5}
+# Outputs to {1 2 3 4 5}
+
 
 # for loop on array
 nums=(1 3 12)
@@ -143,18 +170,10 @@ ${array[@]}		Get All elements
 ${array[*]}		Get All elements
 ${!array[!]}	Get All indexes
 ${#array[!]}	Array length
+${#array[@]}	Array length
 ```
 
-# if elif else
-```bash
-if condition1; then
-	# true code
-elif condition2; then
-	# condition1 is false and condition2 is true
-else
-	# none of above condition are true
-fi
-```
+# Conditionals
 
 - `[condition]` : file string operation
 - `[[condition]]` : combining multiple conditions and handling regex pattern
@@ -164,10 +183,124 @@ fi
 > - Space is required before and after `[` and `]`
 > - A semicolon before then is required
 
+```bash
+# True if file exists. (deprecated)
+[[ -a ${file} ]]
+
+# True if file exists.
+# preferred in modern scripts
+[[ -e ${file} ]]
+
+# True if file exists and is a block special file.
+[[ -b ${file} ]]
+
+# True if file exists and is a character special file.
+[[ -c ${file} ]]
+
+# True if file exists and is a directory.
+[[ -d ${file} ]]
+
+# True if file exists and is a regular file.
+[[ -f ${file} ]]
+
+# True if file exists and is a symbolic link.
+[[ -h ${file} ]]
+# True if file exists and is a symbolic link.
+[[ -L ${file} ]]
+
+# True if file exists and is readable.
+[[ -r ${file} ]]
+
+# True if file exists and has a size greater than zero.
+[[ -s ${file} ]]
+
+# True if file exists and is writable.
+[[ -w ${file} ]]
+
+# True if file exists and is executable.
+[[ -x ${file} ]]
+
+# True if the shell variable varname is set (has been assigned a value).
+[[ -v ${varname} ]]
+
+# True if the length of the string is zero.
+[[ -z ${string} ]]
+
+# True if the length of the string is non-zero.
+[[ -n ${string} ]]
+
+# String comparison true if equal
+[[ ${string1} == ${string2} ]]
+# True if the strings are not equal.
+[[ ${string1} != ${string2} ]]
+# True if string1 sorts before string2 lexicographically.
+[[ ${string1} < ${string2} ]]
+# True if string1 sorts after string2 lexicographically.
+[[ ${string1} > ${string2} ]]
+
+# Number comparison
+[[ ${arg1} -eq ${arg2} ]]  # ==
+[[ ${arg1} -ne ${arg2} ]]  # !=
+[[ ${arg1} -lt ${arg2} ]]  # <
+[[ ${arg1} -le ${arg2} ]]  # <=
+[[ ${arg1} -gt ${arg2} ]]  # >
+[[ ${arg1} -ge ${arg2} ]]  # >=
+
+# AND / OR
+[[ test_case_1 ]] && [[ test_case_2 ]] # And
+[[ test_case_1 ]] || [[ test_case_2 ]] # Or
+
+# returns true if the command was successful without any errors
+[[ $? -eq 0 ]]
+# returns true if the command was not successful or had errors
+[[ $? -gt 0 ]]
+
+
+```
+> `$?` stores the last executed command reuslt status like 0 for successful execution and greater than 0 for some error
+
+## if elif else
+```bash
+if [[ condition1 ]]; then
+	# true code
+elif condition2
+then
+	# condition1 is false and condition2 is true
+else
+	# none of above condition are true
+fi
+```
+
+example1: check your current UserID and would not allow you to run the script as the root user
+```bash
+#!/bin/bash
+if (( $EUID == 0 )); then
+ echo "Please do not run as root"
+ exit
+fi
+
+```
+
+## case
+```bash
+case $some_variable in
+ pattern_1)		# ) is important at the end
+ commands
+ ;;				# ;; to end the block
+ pattern_2| pattern_3)		# | to separate multiple cases
+ commands
+ ;;
+ *)				# default case start
+ default commands
+ ;;
+esac
+
+```
+
 # Loops
 ## for
 ```bash
-for element in [list]
+for element in ${list}
 # ex for element in 1 2 3 4 5
 do
 	echo $element
@@ -196,4 +329,74 @@ while [[ i -lt 100 ]]; do
 done
 ```
 
-##
+example1:
+```bash
+#!/bin/bash
+counter=1
+while [[ $counter -le 10 ]]
+do
+ echo $counter
+ ((counter++))
+done
+```
+
+## until
+The difference between `until` and `while` loops is that the `until` loop will run the commands within the loop until the condition becomes `true`
+```bash
+until [[ your_condition ]]
+do
+ your_commands
+done
+```
+
+## `continue` and `break`
+syntax: `continue [n]` and `break[n]`
+> here the [n] argument is optional and can be greater than or equal to 1. When [n] is given, the n-th enclosing loop is affected.
+
+> For two nested loop, if continue 2 is used then instead of resuming inner loop it will go to outer loop
+
+```bash
+until [[ condition until true ]]
+do
+	while [[ condition ]]
+	do
+		# do something
+		continue 2
+	done
+done
+```
+
+# Function
+```bash
+function function_name() {
+ your_commands
+}
+# OR
+function_name() {
+ your_commands
+}
+
+```
+- `function` keyword is optional
+- You should not add the parenthesis when you call the function
+
+Example1:
+```bash
+#!/bin/bash
+
+#######################################
+# Description: Hello function
+# Globals:
+# None
+# Arguments:
+# Single input argument
+# Outputs:
+# Value of input argument
+# Returns:
+# 0 if successful, non-zero on error.
+#######################################
+function hello() {
+ echo "Hello $1!"
+}
+hello DevDojo
+```
