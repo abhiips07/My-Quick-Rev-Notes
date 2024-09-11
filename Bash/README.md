@@ -15,6 +15,18 @@ Bash: bourne again shell (enhanced version of shell)
 - `grep`: Search text patterns.
 - `chmod`: Change file permissions.
 - `chown`: Change file owner and group.
+- `read`: Take user input
+- `basename` and `dirname`: basename gives the filename and dirname give the dir path from complete file path
+  ```bash
+  PATHNAME=/etc/system/info.config
+  > basename $PATHNAME
+  info.config
+
+  > dirname $PATHNAME
+  /etc/system
+
+  ```
+
 ## System Management:
 - `top`: Display Linux processes.
 - `ps`: Show currently running processes.
@@ -52,6 +64,15 @@ Bash: bourne again shell (enhanced version of shell)
 ## Text Processing:
 - `awk`: Text processing tool.
 - `cut`: Remove sections from each line of files.
+  - `-b` specifiy byte like -b 1-3,7
+  - `-c` select specific characters rather than byte. Good for multi byte encodings
+  - `-d` delimiter used as field separator, default is `TAB`
+  - `-f` field list ex -f 1-2,4
+  - `-complement` print not selected fields/characters
+  - `--output-delimiter=%` delemiter used in output, by default it is same as input delimiter described in -d
+
+- `sed`: stream editor
+  `sed 's/match-patter/replace-pattern' filename`
 - `sort`: Sort lines of text files.
 - `uniq`: Report or omit repeated lines.
 - `tr`: Translate or delete characters.
@@ -113,8 +134,12 @@ if parameter are passed to the command like this `./myscript.sh para1 para2!` th
 - $@: for all parameter
 - $0: reference the script itself (can be used to self destruct by `rm -f $0` in the script)
 
-### take input
+# take input
 `-p` is use for prompt msg
+`-r` disable escape backslash
+`-s` Does not echo user's input
+`-t` timeout in seconds
+
 ```bash
 #!/bin/bash
 read -p "What is your name? " name
