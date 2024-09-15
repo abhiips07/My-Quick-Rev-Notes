@@ -26,6 +26,8 @@ Bash: bourne again shell (enhanced version of shell)
   /etc/system
 
   ```
+- `man <>`: help doc for non builtins binaries
+- `help <>`: help doc for builtin system binaries
 
 ## System Management:
 - `top`: Display Linux processes.
