@@ -23,8 +23,11 @@
   - `CPPFLAGS`: Extra flags to give to the C preprocessor
   - `LDFLAGS`: Extra flags to five to the linker
 - `make -p`: to get the list of all predefined variables
-- `+=` concatenate
-- `?=` only set variables if they have not been set
+#### Assignment rules
+- `=` Lazy set, which means variable on right side are expanded at the point of its use with current value, not the one at the time of decleration. Overwrite previous value.
+- `:=` immediate Set, simple one time expansion at the time of decleration
+- `?=` only set variables if they have not been set. This is also Lazy set
+- `+=` append
 
 ## Patterns
 - $@: the file name of the target
