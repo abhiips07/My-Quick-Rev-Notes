@@ -1,8 +1,63 @@
 - For vey precise calculation use `BigDecimal`
+- `Integer.MAX_VALUE`
+- `Integer.MIN_VALUE`
+- `Long.MAX_VALUE`
+- 273469738462784L	: 'L' at last of long literals
+
+# Remember these
+- Reference variable default to `null` value.
+Boolean values are in lowercase `true` and `false`. `false` is default value.
+- Only primitive data-types: `Byte`, `Short`, `Int`, `Long`, `Double`, `Float`, `Char` and `Boolean` are stored directly in ***STACK*** memory.
+- `+` is used for string concatenation
+- `==` compares stack memory content only. `.equals()` must be used for other cases (if available).
+
+#### `final`
+- `final` is used, **'const'** is not valid in java
+- `final <datatype> CAPTALISE_NAME`.
+- final method cannot be overridden.
+- final class cannot be extended
+
+#### Assignment rules
+- `x = y = 0` OR `head = tail = node` this is **correct** in java
+- Assignment returns whatever value is assigned to it
+  ```java
+  int i = 15;
+  System.out.println(i = 10);	# will print 10
+  ```
+
+#### Input stream syntax
+- `BufferedReader br = new BufferedReader(new InputStreamReader(System.in));`
+- `sc.next()` : Reads to next space only no new line
+- `sc.nextLine()` : Reads to next newline character. Must be used two time after sc.nextInt()
+- `sc.hasNext()`	to check availablity
+- There is <span style="color:red;=">NO</span> `sc.nextChar()` in java
+
+---
+---
+
+## printf()
+- similar to printf in [C Programming](https://github.com/MASTREX/My-Quick-Rev-Notes/tree/main/C#printf)
+- System.out.printf(format, arguments);
+- System.out.printf(locale, format, arguments);
+- `%[flags][width][.precision]conversion-character`
+
+## Math module
+- Math.PI	value of pi
+- Math.max(a, b)
+- Math.abs(x) absolute value (mainly for absolute difference)
+- ceil, floor, sin, cos, etc
 
 ## Conditional and Control Flows
 ### `switch`
 - switch statement and switch expression are different. switch expression do not use break and has `->` instead of `:`
+
+### foreach
+- `for(int i: int Array[]) {}`
+- `for(char ch: String s) {}`  <span style="color:red">// DO NOT WORK</span> `for (char ch: "xyz".toCharArray()) {}`	// this works
+
+## Functions
+Fucnction can not be referenced like object and hence Class variable and method can have **same name**.
+ > like `Queue.size` will refer to instance variable size not `size()` method.
 
 ## Classes and Objects
 ### Method of class `Object`
