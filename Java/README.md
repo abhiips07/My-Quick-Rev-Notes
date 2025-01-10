@@ -55,6 +55,29 @@ Boolean values are in lowercase `true` and `false`. `false` is default value.
 - `for(int i: int Array[]) {}`
 - `for(char ch: String s) {}`  <span style="color:red">// DO NOT WORK</span> `for (char ch: "xyz".toCharArray()) {}`	// this works
 
+## Array
+> `type[] name = new type[] {value1, value2, ..., valueN};`
+- `new int[5]` : allocates memory of 5 elements and assign default value of int (0) to each
+- `new int[0]` is not wrong and will compile successfully
+- can also  be initialised as: `new int[]{1, var + 1, 5 var * var};`
+- 2D (lengths)
+  -	Each row of 2d (or multidimension) can be of different length
+  ```java
+  int[][] arr = {{1, 2, 3}, {3, 7}, {7, 2, 8, 1}};
+  int[][] arr = new int[4][];
+  arr[1] = new int[6];
+  arr[2] = new int[3]
+  // both statements are true
+
+  row = arr.length
+  column = arr[0].length
+  ```
+- java.utils.Arrays
+  - `Arrays.toString(arr)`:	to print an array directly
+  - `Arrays.sort(arr)`:		sort arr
+  - `Arrays.sort(arr, Collections.reverseOrder())`:		sort arr in reverse
+  - `Arrays.fill(arr, value)` fill the array with same value
+
 ## Functions
 Fucnction can not be referenced like object and hence Class variable and method can have **same name**.
  > like `Queue.size` will refer to instance variable size not `size()` method.
