@@ -78,6 +78,38 @@ Boolean values are in lowercase `true` and `false`. `false` is default value.
   - `Arrays.sort(arr, Collections.reverseOrder())`:		sort arr in reverse
   - `Arrays.fill(arr, value)` fill the array with same value
 
+## Strings
+- character <span style="color:red">cannot</span> be changed once initialised.
+  ```java
+  s = "hello";
+  s[1] = 'o';		//WRONG
+  ```
+- Functions:
+  - `s.length()`
+  - `s.charAt(int)`
+  - `s.contains(String str)`
+  - `s.indexOf(int ch)`
+  - `s.indexOf(String str)`
+  - `s.toLowerCase()`
+  - `s.toUpperCase()`
+  - `s.trim()`
+  - `String[] split(String regex)`
+  - `s1.equals(s2)` :		compares s1 and s2
+  - `s1.compareTo(s2)`:	return int value
+  - - `s.substring(0, 3)`:	0 index included, 3 index excluded		( **O(n) complexity** )
+	- `s.substring(1, 1)`:	blank string
+	- `s.substring(1)`:		from 1 to last
+	- `s.substring(2, 1)`:	ERROR
+- integer , character and strings can be added together
+    ```java
+	s = "abc";
+	s += 'd';
+	```
+
+- convert string to integer by `Integer.parseInt(str)`
+- `String.join("delimiter", string array)`		## may not be correct
+- `new String(charr)` : String form char array. here `charr` is of type char[]'
+
 ## Functions
 Fucnction can not be referenced like object and hence Class variable and method can have **same name**.
  > like `Queue.size` will refer to instance variable size not `size()` method.
