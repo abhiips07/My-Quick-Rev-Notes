@@ -110,11 +110,36 @@ Boolean values are in lowercase `true` and `false`. `false` is default value.
 - `String.join("delimiter", string array)`		## may not be correct
 - `new String(charr)` : String form char array. here `charr` is of type char[]'
 
+## StringBuilder
+- `new StringBuilder()` : It creates an empty String Builder with the initial capacity of **16**.
+- `StringBuilder(String str)` It creates a String Builder with the specified string.
+- `StringBuilder(int length)` It creates an empty String Builder with the specified capacity as length.
+
+#### functions
+- `StringBuilder append(Type s)`
+- `StringBuilder insert(int offset, Type s)`
+- `StringBuilder replace(int startIndex, int endIndex, String str)`
+- `StringBuilder delete(int startIndex, int endIndex)`
+- `StringBuilder reverse()`
+- `int capacity()`
+- `void ensureCapacity(int minimumCapacity)`
+- `char charAt(int index)`
+- `int indexOf(String str)`
+- `int lastIndexOf(String str)`
+- `int length()`
+- `void setLength(int newLength)`
+- `void setCharAt(int index, char ch)`
+- `String substring(int beginIndex)`
+- `String substring(int beginIndex, int endIndex)` : start inclusive, end exclusive(end -1)
+
 ## Functions
 Fucnction can not be referenced like object and hence Class variable and method can have **same name**.
  > like `Queue.size` will refer to instance variable size not `size()` method.
 
-## Classes and Objects
+---
+---
+
+# Classes and Objects
 ### Method of class `Object`
 - `tostring()`: convert object ot string
 - `hashCode()`
