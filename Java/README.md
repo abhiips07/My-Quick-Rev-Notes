@@ -73,10 +73,11 @@ Boolean values are in lowercase `true` and `false`. `false` is default value.
   - `String[] split(String regex)`
   - `s1.equals(s2)` :		compares s1 and s2
   - `s1.compareTo(s2)`:	return int value
-  - - `s.substring(0, 3)`:	0 index included, 3 index excluded		( **O(n) complexity** )
-	- `s.substring(1, 1)`:	blank string
-	- `s.substring(1)`:		from 1 to last
-	- `s.substring(2, 1)`:	ERROR
+  - Substring
+    - `s.substring(0, 3)`:	0 index included, 3 index excluded		( **O(n) complexity** )
+    - `s.substring(1, 1)`:	blank string
+    - `s.substring(1)`:		from 1 to last
+    - `s.substring(2, 1)`:	ERROR
 - integer , character and strings can be added together
     ```java
 	s = "abc";
@@ -151,7 +152,6 @@ List< Integer> al = new ArrayList< >();
 - `a1.remove(index)`
 - `a1.indexOf(value)`
 - `a1.toArray()`
-
 - to create list use
   ```java
   Arrays.asList(new Integer[]{1, 2, 3, 4, 5})
@@ -195,11 +195,68 @@ Nested Class
 - A static inner class is a nested class which is a static member of the outer class. It can be accessed without instantiating the outer class, using other static members. Just like static members, a static nested class does not have access to the instance variables and methods of the outer class
 - static keyword can be used before class "static class \<ClassName> {***}". They execute as soon as class is loaded
 
-## enum
-- enum has order
-- `.ordinal()` : to get the index of any enum constant
-- `.name()` : for name string
-- `EnumName.values()` : to convert enum to a list
+## Generics classes
+- Class
+  ```java
+	public class <T> classname{
+	}
+  ```
+
+- method:
+  ```java
+	public static <T, V> void func(T typeTpara, V typeVpara) {
+	}
+  ```
+
+## Comparable
+Example usage
+```java
+public static class Person implements Comparable<Person> {
+  String name;
+  int height;
+
+  Person(String name, int h) {
+    this.name = name;
+    height = h;
+  }
+
+  @Override
+  public int compareTo(Person o) {
+    if (this.height > o.height) {
+      return 1;
+    } else if (this.height == o.height) {
+      return 0;
+    } else {
+      return -1;
+    }
+  }
+}
+```
+
+## Enum
+```java
+// Defining an Enum
+public enum DayOfTheWeek {
+    SUN, MON, TUES, WED, THUR, FRI, SAT
+}
+
+// Working with Enum Methods
+DayOfTheWeek weekDay = DayOfTheWeek.TUES;
+System.out.println(weekDay);  // Output: TUES
+
+// Supported Methods
+weekDay.name();     // Returns the name as a String ("TUES")
+weekDay.ordinal();  // Returns the index (2, since index starts from zero)
+
+// Getting all enum values
+DayOfTheWeek[] allDays = DayOfTheWeek.values();
+System.out.println(Arrays.toString(allDays));  // Output: [SUN, MON, TUES, WED, THUR, FRI, SAT]
+```
+Enum Properties
+- Enums have an implicit order
+- `.ordinal()` provides the index of an enum constant
+- `.name()` returns the name of the constant as a string
+- `EnumName.values()` returns an array of all enum values
 
 ## package `java.util.function`
 - When importing another package, package declaration must be the first statement followed by package import.
