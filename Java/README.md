@@ -55,29 +55,6 @@ Boolean values are in lowercase `true` and `false`. `false` is default value.
 - `for(int i: int Array[]) {}`
 - `for(char ch: String s) {}`  <span style="color:red">// DO NOT WORK</span> `for (char ch: "xyz".toCharArray()) {}`	// this works
 
-## Array
-> `type[] name = new type[] {value1, value2, ..., valueN};`
-- `new int[5]` : allocates memory of 5 elements and assign default value of int (0) to each
-- `new int[0]` is not wrong and will compile successfully
-- can also  be initialised as: `new int[]{1, var + 1, 5 var * var};`
-- 2D (lengths)
-  -	Each row of 2d (or multidimension) can be of different length
-  ```java
-  int[][] arr = {{1, 2, 3}, {3, 7}, {7, 2, 8, 1}};
-  int[][] arr = new int[4][];
-  arr[1] = new int[6];
-  arr[2] = new int[3]
-  // both statements are true
-
-  row = arr.length
-  column = arr[0].length
-  ```
-- java.utils.Arrays
-  - `Arrays.toString(arr)`:	to print an array directly
-  - `Arrays.sort(arr)`:		sort arr
-  - `Arrays.sort(arr, Collections.reverseOrder())`:		sort arr in reverse
-  - `Arrays.fill(arr, value)` fill the array with same value
-
 ## Strings
 - character <span style="color:red">cannot</span> be changed once initialised.
   ```java
@@ -115,7 +92,7 @@ Boolean values are in lowercase `true` and `false`. `false` is default value.
 - `StringBuilder(String str)` It creates a String Builder with the specified string.
 - `StringBuilder(int length)` It creates an empty String Builder with the specified capacity as length.
 
-#### functions
+#### stringBuilder functions
 - `StringBuilder append(Type s)`
 - `StringBuilder insert(int offset, Type s)`
 - `StringBuilder replace(int startIndex, int endIndex, String str)`
@@ -132,6 +109,57 @@ Boolean values are in lowercase `true` and `false`. `false` is default value.
 - `String substring(int beginIndex)`
 - `String substring(int beginIndex, int endIndex)` : start inclusive, end exclusive(end -1)
 
+
+## Array
+> `type[] name = new type[] {value1, value2, ..., valueN};`
+- `new int[5]` : allocates memory of 5 elements and assign default value of int (0) to each
+- `new int[0]` is not wrong and will compile successfully
+- can also  be initialised as: `new int[]{1, var + 1, 5 var * var};`
+- 2D (lengths)
+  -	Each row of 2d (or multidimension) can be of different length
+  ```java
+  int[][] arr = {{1, 2, 3}, {3, 7}, {7, 2, 8, 1}};
+  int[][] arr = new int[4][];
+  arr[1] = new int[6];
+  arr[2] = new int[3]
+  // both statements are true
+
+  row = arr.length
+  column = arr[0].length
+  ```
+- java.utils.Arrays
+  - `Arrays.toString(arr)`:	to print an array directly
+  - `Arrays.sort(arr)`:		sort arr
+  - `Arrays.sort(arr, Collections.reverseOrder())`:		sort arr in reverse
+  - `Arrays.fill(arr, value)` fill the array with same value
+
+## Arraylist
+Syntax:
+```java
+ArrayList< Integer> al = new ArrayList< >();
+// Using List Interface
+List< Integer> al = new ArrayList< >();
+```
+- It doubles the total capacity of the list on insertion at full capacity
+- The initial size of Arraylist is 0 as it is empty and the initial capacity of an Arraylist in Java is 10
+#### arraylist function
+- `a1.size()`: returns size or count of current element(not capacity)
+- `a1.add(30)`
+- `a1.add(i, 1000)`
+- `a1.get(i)`
+- `a1.set(i, 2000)`
+- `a1.remove(index)`
+- `a1.indexOf(value)`
+- `a1.toArray()`
+
+- to create list use
+  ```java
+  Arrays.asList(new Integer[]{1, 2, 3, 4, 5})
+  // OR
+  List.of(elements)
+  ```
+
+
 ## Functions
 Fucnction can not be referenced like object and hence Class variable and method can have **same name**.
  > like `Queue.size` will refer to instance variable size not `size()` method.
@@ -140,6 +168,16 @@ Fucnction can not be referenced like object and hence Class variable and method 
 ---
 
 # Classes and Objects
+### Inheritance
+'super' is used to call from parent class when child class has same name variable and methods
+### Polymorphism
+> ParentClass name = new ChildClass;
+- A parent class reference can refer to a child class object.
+- Only the overridden methods(of child class) can be called using the parent class reference. Any new method created in the child class will not be accessible using the parent class reference.
+- If both classes has same name variable but called with parent reference then parent variable will be accessed.
+- Static methods are not overridden. They will be called based on the type of reference used.
+Nested Class
+
 ### Method of class `Object`
 - `tostring()`: convert object ot string
 - `hashCode()`
@@ -149,6 +187,14 @@ Fucnction can not be referenced like object and hence Class variable and method 
 - `clone()`
 - `wait()`, `notify()`, `notifyAll()`
 
+## Static Variable
+- single copy to all instances.
+- single value can be directly initialised but expression which must be processed before initialisation should be in static block.
+- static variable SHOULD be accessed using class name and not object name
+- A static method or static block can only access static variables and cannot access instance variables.
+- A static inner class is a nested class which is a static member of the outer class. It can be accessed without instantiating the outer class, using other static members. Just like static members, a static nested class does not have access to the instance variables and methods of the outer class
+- static keyword can be used before class "static class \<ClassName> {***}". They execute as soon as class is loaded
+
 ## enum
 - enum has order
 - `.ordinal()` : to get the index of any enum constant
@@ -156,6 +202,8 @@ Fucnction can not be referenced like object and hence Class variable and method 
 - `EnumName.values()` : to convert enum to a list
 
 ## package `java.util.function`
+- When importing another package, package declaration must be the first statement followed by package import.
+
 | Interface | Function Method | No of Arguments | Returns a value | Can be chained |
 |-|-|-|-|-|
 | Consumer | accept() | 1 or 2 (Bi) | No | Yes |
