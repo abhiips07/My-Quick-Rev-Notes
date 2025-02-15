@@ -98,3 +98,45 @@ public static void main(String[] args) throws Exception {
   graph[0].add(new Edge(0, 2, 20));
 }
 ```
+
+# HashMap
+- **Insertion, Deletion, Searching: O(1) Time Complexity**
+- **Directly Printable:** `System.out.println(hm);`
+- Syntax:
+  ```java
+  HashMap<String, Integer> hm = new HashMap<>();
+  ```
+- Common Methods:
+  ```java
+  hm.put("India", 135);          // Add or update key-value pair
+  hm.get("Utopia");              // Retrieve value, or null if not found
+  hm.getOrDefault(key, defaultValue); // Get value or return default if absent
+  hm.containsKey("India");       // Check if key exists (true/false)
+  hm.remove("key");              // Remove key from HashMap
+  ```
+- Iteration:
+  ```java
+  Set<String> keys = hm.keySet();
+  for (String key : keys) {
+      // Access each key
+  }
+  ```
+
+# Set
+
+- **Unordered Collection with Unique Elements**
+  > Interface: `java.util.Set`
+  > Implementation: `java.util.HashSet`
+- Syntax:
+  ```java
+  Set<type> set = new HashSet<>();
+  ```
+- Common Methods:
+  ```java
+  set.add(ele);          // Add an element to the set
+  set.addAll(collection); // Add all elements from a collection
+  set.remove(ele);       // Remove an element from the set
+  set.contains(ele);     // Check if an element exists in the set
+  set.size();           // Get the number of elements in the set
+  set.toArray();        // Convert the set to an array
+  ```
