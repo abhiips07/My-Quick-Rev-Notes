@@ -1,3 +1,106 @@
+# Strings
+- character <span style="color:red">cannot</span> be changed once initialised.
+  ```java
+  s = "hello";
+  s[1] = 'o';		//WRONG
+  ```
+- Functions:
+  - `s.length()`
+  - `s.charAt(int)`
+  - `s.contains(String str)`
+  - `s.indexOf(int ch)`
+  - `s.indexOf(String str)`
+  - `s.toLowerCase()`
+  - `s.toUpperCase()`
+  - `s.trim()`
+  - `String[] split(String regex)`
+  - `s1.equals(s2)` :		compares s1 and s2
+  - `s1.compareTo(s2)`:	return int value
+  - Substring
+    - `s.substring(0, 3)`:	0 index included, 3 index excluded		( **O(n) complexity** )
+    - `s.substring(1, 1)`:	blank string
+    - `s.substring(1)`:		from 1 to last
+    - `s.substring(2, 1)`:	ERROR
+- integer , character and strings can be added together
+    ```java
+	s = "abc";
+	s += 'd';
+	```
+
+- convert string to integer by `Integer.parseInt(str)`
+- `String.join("delimiter", string array)`		## may not be correct
+- `new String(charr)` : String form char array. here `charr` is of type char[]'
+
+# StringBuilder
+- `new StringBuilder()` : It creates an empty String Builder with the initial capacity of **16**.
+- `StringBuilder(String str)` It creates a String Builder with the specified string.
+- `StringBuilder(int length)` It creates an empty String Builder with the specified capacity as length.
+
+#### stringBuilder functions
+- `StringBuilder append(Type s)`
+- `StringBuilder insert(int offset, Type s)`
+- `StringBuilder replace(int startIndex, int endIndex, String str)`
+- `StringBuilder delete(int startIndex, int endIndex)`
+- `StringBuilder reverse()`
+- `int capacity()`
+- `void ensureCapacity(int minimumCapacity)`
+- `char charAt(int index)`
+- `int indexOf(String str)`
+- `int lastIndexOf(String str)`
+- `int length()`
+- `void setLength(int newLength)`
+- `void setCharAt(int index, char ch)`
+- `String substring(int beginIndex)`
+- `String substring(int beginIndex, int endIndex)` : start inclusive, end exclusive(end -1)
+
+# Array
+> `type[] name = new type[] {value1, value2, ..., valueN};`
+- `new int[5]` : allocates memory of 5 elements and assign default value of int (0) to each
+- `new int[0]` is not wrong and will compile successfully
+- can also  be initialised as: `new int[]{1, var + 1, 5 var * var};`
+- 2D (lengths)
+  -	Each row of 2d (or multidimension) can be of different length
+  ```java
+  int[][] arr = {{1, 2, 3}, {3, 7}, {7, 2, 8, 1}};
+  int[][] arr = new int[4][];
+  arr[1] = new int[6];
+  arr[2] = new int[3]
+  // both statements are true
+
+  row = arr.length
+  column = arr[0].length
+  ```
+- java.utils.Arrays
+  - `Arrays.toString(arr)`:	to print an array directly
+  - `Arrays.sort(arr)`:		sort arr
+  - `Arrays.sort(arr, Collections.reverseOrder())`:		sort arr in reverse
+  - `Arrays.fill(arr, value)` fill the array with same value
+
+# Arraylist
+Syntax:
+```java
+ArrayList< Integer> al = new ArrayList< >();
+// Using List Interface
+List< Integer> al = new ArrayList< >();
+```
+- It doubles the total capacity of the list on insertion at full capacity
+- The initial size of Arraylist is 0 as it is empty and the initial capacity of an Arraylist in Java is 10
+#### arraylist function
+- `a1.size()`: returns size or count of current element(not capacity)
+- `a1.add(30)`
+- `a1.add(i, 1000)`
+- `a1.get(i)`
+- `a1.set(i, 2000)`
+- `a1.remove(index)`
+- `a1.indexOf(value)`
+- `a1.toArray()`
+- to create list use
+  ```java
+  Arrays.asList(new Integer[]{1, 2, 3, 4, 5})
+  // OR
+  List.of(elements)
+  ```
+
 # LinkedList
 
 > Class: `java.util.LinkedList`
