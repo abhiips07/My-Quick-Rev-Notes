@@ -1,8 +1,11 @@
-- For vey precise calculation use `BigDecimal`
-- `Integer.MAX_VALUE`
-- `Integer.MIN_VALUE`
-- `Long.MAX_VALUE`
-- 273469738462784L	: 'L' at last of long literals
+> Link to [JavaCompilationProcess.md](/Java/JavaCompilationProcess.md)
+
+> Link to [DataStructures.md](/Java/DataStructures.md)
+
+> Link to [Algorithms.md](/Java/Algorithms.md)
+
+---
+---
 
 # Remember these
 - Reference variable default to `null` value.
@@ -42,10 +45,35 @@ Boolean values are in lowercase `true` and `false`. `false` is default value.
 - `%[flags][width][.precision]conversion-character`
 
 ## Math module
+- For vey precise calculation use `BigDecimal`
+- `Integer.MAX_VALUE`
+- `Integer.MIN_VALUE`
+- `Long.MAX_VALUE`
+- 273469738462784L	: 'L' at last of long literals
 - Math.PI	value of pi
 - Math.max(a, b)
 - Math.abs(x) absolute value (mainly for absolute difference)
 - ceil, floor, sin, cos, etc
+
+## BigInteger
+
+- **Use Cases:**
+  - Use `BigInteger` for large integer values beyond `long` range.
+  - Use `BigDecimal` for floating-point numbers.
+  - `BigInteger` can grow as large as available RAM allows.
+
+- **Syntax:**
+  ```java
+  BigInteger num = new BigInteger("<String>");
+  ```
+
+- **Common Methods:**
+  ```java
+  num.add(BigInteger val);       // Returns sum as BigInteger
+  num.mod(BigInteger val);       // Returns remainder as BigInteger
+  num.pow(int val);              // Returns num^val as BigInteger
+  num.compareTo(BigInteger val); // Returns -1, 0, or 1 (less than, equal, greater than)
+  ```
 
 ## Conditional and Control Flows
 ### `switch`
@@ -53,112 +81,7 @@ Boolean values are in lowercase `true` and `false`. `false` is default value.
 
 ### foreach
 - `for(int i: int Array[]) {}`
-- `for(char ch: String s) {}`  <span style="color:red">// DO NOT WORK</span> `for (char ch: "xyz".toCharArray()) {}`	// this works
-
-## Strings
-- character <span style="color:red">cannot</span> be changed once initialised.
-  ```java
-  s = "hello";
-  s[1] = 'o';		//WRONG
-  ```
-- Functions:
-  - `s.length()`
-  - `s.charAt(int)`
-  - `s.contains(String str)`
-  - `s.indexOf(int ch)`
-  - `s.indexOf(String str)`
-  - `s.toLowerCase()`
-  - `s.toUpperCase()`
-  - `s.trim()`
-  - `String[] split(String regex)`
-  - `s1.equals(s2)` :		compares s1 and s2
-  - `s1.compareTo(s2)`:	return int value
-  - Substring
-    - `s.substring(0, 3)`:	0 index included, 3 index excluded		( **O(n) complexity** )
-    - `s.substring(1, 1)`:	blank string
-    - `s.substring(1)`:		from 1 to last
-    - `s.substring(2, 1)`:	ERROR
-- integer , character and strings can be added together
-    ```java
-	s = "abc";
-	s += 'd';
-	```
-
-- convert string to integer by `Integer.parseInt(str)`
-- `String.join("delimiter", string array)`		## may not be correct
-- `new String(charr)` : String form char array. here `charr` is of type char[]'
-
-## StringBuilder
-- `new StringBuilder()` : It creates an empty String Builder with the initial capacity of **16**.
-- `StringBuilder(String str)` It creates a String Builder with the specified string.
-- `StringBuilder(int length)` It creates an empty String Builder with the specified capacity as length.
-
-#### stringBuilder functions
-- `StringBuilder append(Type s)`
-- `StringBuilder insert(int offset, Type s)`
-- `StringBuilder replace(int startIndex, int endIndex, String str)`
-- `StringBuilder delete(int startIndex, int endIndex)`
-- `StringBuilder reverse()`
-- `int capacity()`
-- `void ensureCapacity(int minimumCapacity)`
-- `char charAt(int index)`
-- `int indexOf(String str)`
-- `int lastIndexOf(String str)`
-- `int length()`
-- `void setLength(int newLength)`
-- `void setCharAt(int index, char ch)`
-- `String substring(int beginIndex)`
-- `String substring(int beginIndex, int endIndex)` : start inclusive, end exclusive(end -1)
-
-
-## Array
-> `type[] name = new type[] {value1, value2, ..., valueN};`
-- `new int[5]` : allocates memory of 5 elements and assign default value of int (0) to each
-- `new int[0]` is not wrong and will compile successfully
-- can also  be initialised as: `new int[]{1, var + 1, 5 var * var};`
-- 2D (lengths)
-  -	Each row of 2d (or multidimension) can be of different length
-  ```java
-  int[][] arr = {{1, 2, 3}, {3, 7}, {7, 2, 8, 1}};
-  int[][] arr = new int[4][];
-  arr[1] = new int[6];
-  arr[2] = new int[3]
-  // both statements are true
-
-  row = arr.length
-  column = arr[0].length
-  ```
-- java.utils.Arrays
-  - `Arrays.toString(arr)`:	to print an array directly
-  - `Arrays.sort(arr)`:		sort arr
-  - `Arrays.sort(arr, Collections.reverseOrder())`:		sort arr in reverse
-  - `Arrays.fill(arr, value)` fill the array with same value
-
-## Arraylist
-Syntax:
-```java
-ArrayList< Integer> al = new ArrayList< >();
-// Using List Interface
-List< Integer> al = new ArrayList< >();
-```
-- It doubles the total capacity of the list on insertion at full capacity
-- The initial size of Arraylist is 0 as it is empty and the initial capacity of an Arraylist in Java is 10
-#### arraylist function
-- `a1.size()`: returns size or count of current element(not capacity)
-- `a1.add(30)`
-- `a1.add(i, 1000)`
-- `a1.get(i)`
-- `a1.set(i, 2000)`
-- `a1.remove(index)`
-- `a1.indexOf(value)`
-- `a1.toArray()`
-- to create list use
-  ```java
-  Arrays.asList(new Integer[]{1, 2, 3, 4, 5})
-  // OR
-  List.of(elements)
-  ```
-
+- `for(char ch: String s) {}`  <span style="color:red">// DO NOT WORK</span>, Instead use: `for (char ch: "xyz".toCharArray()) {}`	// this works
 
 ## Functions
 Fucnction can not be referenced like object and hence Class variable and method can have **same name**.
@@ -168,6 +91,9 @@ Fucnction can not be referenced like object and hence Class variable and method 
 ---
 
 # Classes and Objects
+### package
+- When importing another package, package declaration must be the first statement followed by package import.
+
 ### Inheritance
 'super' is used to call from parent class when child class has same name variable and methods
 ### Polymorphism
@@ -194,6 +120,12 @@ Nested Class
 - A static method or static block can only access static variables and cannot access instance variables.
 - A static inner class is a nested class which is a static member of the outer class. It can be accessed without instantiating the outer class, using other static members. Just like static members, a static nested class does not have access to the instance variables and methods of the outer class
 - static keyword can be used before class "static class \<ClassName> {***}". They execute as soon as class is loaded
+
+## Iterator
+	java.util.Iterator;
+  hasNext();
+  next();
+  <!-- // TODO -->
 
 ## Generics classes
 - Class
@@ -233,6 +165,71 @@ public static class Person implements Comparable<Person> {
 }
 ```
 
+## Interface
+
+- **Enforces function signatures**
+- **Key Characteristics:**
+  - Interface reference variable can hold the object of its implementing class only, not of itself.
+  - Contains method signatures and constant declarations.
+  - Methods declared in an interface are implicitly `public` and `abstract`.
+  - Data fields are implicitly `public`, `static`, and `final` (constants).
+- **Inheritance & Implementation:**
+  - An interface can extend multiple interfaces.
+  - A class can implement multiple interfaces (simulating multiple inheritance).
+  - A class can extend only one class but implement any number of interfaces.
+  - The `implements` keyword is used to implement an interface.
+  - A class implementing an interface must implement all specified methods or be declared `abstract`.
+- **Dynamic Binding:**
+  - An interface creates a type; its reference can be used to refer to objects of implementing classes, enabling dynamic binding.
+
+## Exception
+
+- **Exception Handling Rules:**
+  - The catch block of a parent class exception must appear after the catch block of a child class exception.
+  - A generic `catch` block can handle all exceptions.
+  - The generic `catch` block must be the last catch block in a try-catch sequence.
+
+- **Explicit Exception Raising:**
+  - Exceptions can be raised explicitly using the `throw` keyword.
+    ```java
+    throw new <exceptionclass>("error message");
+    ```
+
+- **Types of Exceptions:**
+  - **Checked Exception** – Must be handled using `try-catch` or declared with `throws`.
+  - **Unchecked Exception** – Typically derived from `RuntimeException`, not mandatory to handle.
+
+- **Exception Propagation:**
+  - If an exception is propagated using `throw`, the method must be declared with the `throws` keyword.
+
+- **User-Defined Exception:**
+  - Must extend the `Exception` class.
+
+## try-catch-finally Example:
+```java
+try {
+    // assumed arr.length = 3
+    int i = arr[4];  // This statement raises an exception
+    System.out.println("Inside try block");  // Will not execute
+}
+catch (ArrayIndexOutOfBoundsException ex) {
+    System.out.println("Exception caught in catch block");
+}
+finally {
+    System.out.println("finally block executed");
+}
+```
+
+---
+---
+
+## Annotations
+
+- **@Override**
+  - Ensures that a method is actually overriding a parent method.
+  - If applied to a method that does not override any parent method, a compilation error occurs.
+  - Improves readability and prevents accidental method signature mismatches.
+
 ## Enum
 ```java
 // Defining an Enum
@@ -258,8 +255,67 @@ Enum Properties
 - `.name()` returns the name of the constant as a string
 - `EnumName.values()` returns an array of all enum values
 
+## Lambda Expression
+
+- **Syntax:**
+  ```java
+  parameter -> expression
+  (parameter1, parameter2) -> expression
+  (parameter1, parameter2) -> { code block }  // Code block must have a return statement
+  ```
+- **Example:**
+  ```java
+  ArrayList<Integer> numbers = new ArrayList<Integer>();
+  numbers.add(5);
+  numbers.add(9);
+  numbers.add(8);
+  numbers.add(1);
+
+  // Using lambda expression to iterate and print elements
+  numbers.forEach((n) -> { System.out.println(n); });
+  ```
+
+## Bit Manipulation
+
+- **Shift Operators:**
+  - `<<` : Left shift
+  - `>>` : Signed (Arithmetic) right shift
+  - `>>>` : Unsigned (Logical) right shift
+
+- **Key Differences:**
+  - `>>` (Arithmetic Right Shift): Preserves the sign bit (sign-extension).
+  - `>>>` (Logical Right Shift): Fills the leftmost bits with zeros (zero-extension).
+  - Java **does not** support an unsigned left shift operator.
+
+- **Behavior:**
+  ```java
+  int n = -8;  // 11111111 11111111 11111111 11111000 (in 32-bit binary)
+  System.out.println(n >> 2);  // Arithmetic shift: 11111111 11111111 11111111 11111110 (-2)
+  System.out.println(n >>> 2); // Logical shift:   00111111 11111111 11111111 11111110 (1073741822)
+  ```
+
+## JUnit
+
+- **Overview:**
+  - JUnit is used for unit testing in Java.
+  - A test method can either make assertions or expect exceptions.
+
+- **Assertions (`org.junit.Assert`):**
+  - The `Assert` class provides methods to verify expected outcomes in tests.
+
+- **Common Assertions:**
+  ```java
+  import static org.junit.Assert.*;
+
+  assertEquals(expected, actual);      // Checks if values are equal
+  assertTrue(condition);               // Checks if condition is true
+  assertFalse(condition);              // Checks if condition is false
+  assertNotNull(object);               // Checks if object is not null
+  assertNull(object);                  // Checks if object is null
+  assertArrayEquals(expected, actual); // Checks if arrays are equal
+  ```
+
 ## package `java.util.function`
-- When importing another package, package declaration must be the first statement followed by package import.
 
 | Interface | Function Method | No of Arguments | Returns a value | Can be chained |
 |-|-|-|-|-|
