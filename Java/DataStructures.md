@@ -1,7 +1,9 @@
 # LinkedList
+
 > Class: `java.util.LinkedList`
 
 Syntax:
+
 ```java
 LinkedList<Integer> list = new LinkedList<>();
 ```
@@ -21,8 +23,9 @@ LinkedList<Integer> list = new LinkedList<>();
 - `removeLast()` - Removes the last element of the linked list.
 
 # Stack
+
 - **LIFO (Last In, First Out)**
-> Class: `java.util.Stack`
+  > Class: `java.util.Stack`
 - Syntax:
   ```java
   Stack<type> st = new Stack<type>();
@@ -47,10 +50,13 @@ LinkedList<Integer> list = new LinkedList<>();
   - `ArrayDeque`
 
 ### Example Usage:
+
 ```java
 Queue<Integer> q = new ArrayDeque<>();
 ```
+
 Common Methods:
+
 - `.add(ele)` - Adds an element to the queue.
 - `.remove()` - Removes an element from the queue.
 - `.peek()` - Retrieves, but does not remove, the front element of the queue.
@@ -58,8 +64,37 @@ Common Methods:
 - `.size()` - Returns the number of elements in the queue.
 
 ## PriorityQueue
+
 - By default, **MINIMUM** is given higher priority.
 - **Normal Priority Queue:** `PriorityQueue<Integer> pq = new PriorityQueue<>();`
 - **Reverse Priority Queue:** `PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());`
 - `add()` and `remove()` functions work with **O(log(n))** complexity.
 - `poll()` retrieves and removes the head of the queue.
+
+# Tree
+
+> ## Traverse and Change tecnique
+
+# Graph
+
+```java
+static class Edge {
+  int src;
+  int nbr;
+  int wt;
+
+  Edge(int src, int nbr, int wt) {
+    this.src = src;
+    this.nbr = nbr;
+    this.wt = wt;
+  }
+}
+
+public static void main(String[] args) throws Exception {
+  int vertices = 7; //0 1 2 3 4 5 6
+  ArrayList[] graph = new ArrayList[7];			// array of (arraylist of edge)
+
+  graph[0].add(new Edge(0, 1, 10));
+  graph[0].add(new Edge(0, 2, 20));
+}
+```
