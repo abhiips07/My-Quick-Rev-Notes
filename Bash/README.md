@@ -13,8 +13,17 @@ Bash: bourne again shell (enhanced version of shell)
 - `touch`: Create an empty file.
 - `cat`: Concatenate and display files.
 - `grep`: Search text patterns.
+- `find`: to find with matching a pattern or criteria
+
+  syntax: `find <path> [options value [options value]...]`
+  ```bash
+  find ~/Documents/ -iname "*txt" -type f,l -maxdepth 1 -perm 0600 -exec grep -Hi penguin {} \;
+  ```
 - `chmod`: Change file permissions.
 - `chown`: Change file owner and group.
+- `xargs`: Construct an argument list from stdin and run a command
+
+  syntax: `...stdin... | xargs -n 100 -P 2 chmod 775`
 - `read`: Take user input
 - `basename` and `dirname`: basename gives the filename and dirname give the dir path from complete file path
   ```bash
@@ -114,6 +123,8 @@ Bash: bourne again shell (enhanced version of shell)
 - if a variable is passed like this `ENV_VAR=value executable param1 param2` then it is defined for the period of that command execution only.
 - when we defined a env variable using `export` then it is pass to all sub or child process called from that environment
 
+
+
 # Variables
 ```bash
 # you can not have spaces before and after the = sign.
@@ -136,7 +147,7 @@ if parameter are passed to the command like this `./myscript.sh para1 para2!` th
 - $@: for all parameter
 - $0: reference the script itself (can be used to self destruct by `rm -f $0` in the script)
 
-# take input
+# take input with 'read'
 `-p` is use for prompt msg
 `-r` disable escape backslash
 `-s` Does not echo user's input
@@ -160,6 +171,36 @@ echo "Welcome to DevDojo!"
 
 
 `printenv` or `env` for getting environment variables. Variables are case sensitive
+
+# Special Characters
+#### Wildcards
+   - `?` single character
+   - `*` mulitiple character
+   - `[]` character set
+
+#### Command seperator
+   - `;` executes each even if previous one fails
+   - `&&` stops if previous one fails
+
+#### Background Process
+   - `command &` executes the command in background and return the process ID
+
+#### Input redirection
+   - To take file as input through stream use left-angle bracket `<`
+   - ex: `sort < words.txt`
+
+#### Output redirection
+   - Use the right-angle bracket `>` to redirect the output from a command (typically, into a file);
+   - ex: `ls > files.txt`
+   - use digit 2 to redirect errors. `2>/dev/null` directs error to null
+
+#### Pipe
+   - `|` chains commands together. It takes the output from one command and feeds it to the next as input.
+
+> To use special character as it is use single quotes arround them or use backslash
+> <br>example: `echo 'Today is $(date)'`
+> <br>example: `echo "Today is \$(date)"`
+
 
 # Comments
 ```bash
